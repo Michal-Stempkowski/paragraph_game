@@ -1,4 +1,5 @@
-﻿using Logic;
+﻿using System.Diagnostics.CodeAnalysis;
+using Logic;
 using Logic.Expanded;
 using Logic.Templates;
 using NSubstitute;
@@ -42,10 +43,12 @@ namespace tests
             WorldStateMock.GetString(VariableName).Returns(variableValue);
 
             var variable = new StringVariableTemplate(VariableName);
-            TestExpandingVariableTemplate(variable, variableValue);
+            test_expanding_variable_template(variable, variableValue);
         }
 
-        private void TestExpandingVariableTemplate<TVariableTemplate, TVariableValue>(TVariableTemplate variable, TVariableValue variableValue)
+        private void test_expanding_variable_template<TVariableTemplate, TVariableValue>(
+            TVariableTemplate variable, TVariableValue variableValue)
+
             where TVariableTemplate : VariableTemplate<TVariableValue, Variable<TVariableValue>>
         {
             var expanded = variable.ExpandLogic(WorldStateMock) as Variable<TVariableValue>;
@@ -63,7 +66,20 @@ namespace tests
             WorldStateMock.GetInt(VariableName).Returns(variableValue);
 
             var variable = new IntVariableTemplate(VariableName);
-            TestExpandingVariableTemplate(variable, variableValue);
+            test_expanding_variable_template(variable, variableValue);
+        }
+
+        [Test]
+        [SuppressMessage("ReSharper", "ConditionIsAlwaysTrueOrFalse")]
+        public void bool_variable_should_also_work()
+        {
+            bool? variableValue = true;
+
+            
+            WorldStateMock.GetBool(VariableName).Returns(variableValue);
+
+            var variable = new BoolVariableTemplate(VariableName);
+            test_expanding_variable_template(variable, variableValue);
         }
     }
 }

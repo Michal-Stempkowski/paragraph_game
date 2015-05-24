@@ -8,7 +8,7 @@ namespace tests
         protected readonly IWorldState WorldStateMock;
         protected const string VariableName = "a";
 
-        public VariableTestsBase()
+        protected VariableTestsBase()
         {
             WorldStateMock = Substitute.For<IWorldState>();
         }
