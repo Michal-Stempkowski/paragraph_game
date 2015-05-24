@@ -43,6 +43,7 @@
     <Compile Include="Expanded\Variable.cs" />
     <Compile Include="IWorldState.cs" />
     <Compile Include="Templates\BoolVariableTemplate.cs" />
+    <Compile Include="Templates\FloatVariableTemplate.cs" />
     <Compile Include="Templates\ILogicTemplate.cs" />
     <Compile Include="Templates\IntVariableTemplate.cs" />
     <Compile Include="Templates\StringVariableTemplate.cs" />

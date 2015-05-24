@@ -11,5 +11,6 @@ namespace Logic
         string GetString(string name);
         int? GetInt(string name);
         bool? GetBool(string name);
+        float? GetFloat(string variableName);
     }
 }

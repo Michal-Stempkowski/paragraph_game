@@ -81,5 +81,18 @@ namespace tests
             var variable = new BoolVariableTemplate(VariableName);
             test_expanding_variable_template(variable, variableValue);
         }
+
+        [Test]
+        [SuppressMessage("ReSharper", "ConditionIsAlwaysTrueOrFalse")]
+        public void float_variable_should_also_work()
+        {
+            float? variableValue = 0.5f;
+
+
+            WorldStateMock.GetFloat(VariableName).Returns(variableValue);
+
+            var variable = new FloatVariableTemplate(VariableName);
+            test_expanding_variable_template(variable, variableValue);
+        }
     }
 }
